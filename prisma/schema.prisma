@@ -25,7 +25,7 @@ model Website {
 }
 
 model Product {
-  product_id            Int       @id @default(autoincrement())
+  product_id                 String @id
   availability               String @default("")
   name                       String 
   price                      String 
@@ -60,7 +60,7 @@ model Favorite {
   user          User      @relation(fields: [userId], references: [user_id])
   userId        Int
   product       Product   @relation(fields: [productId], references: [product_id])
-  productId     Int
+  productId    String
   prixs         Int 
 }
 model notification{
