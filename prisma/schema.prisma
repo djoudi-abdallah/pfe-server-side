@@ -26,16 +26,16 @@ model Website {
 
 model Product {
   product_id            Int       @id @default(autoincrement())
-  availability               String
-  name                       String
-  price                      String
+  availability               String @default("")
+  name                       String 
+  price                      String 
   oldPrice                   String      @default("")
-  displayDiscountPercentage  String
-  familyName                 String
-  subfamilyName              String
-  sectionName                String
-  img                        String
-  link                       String
+  displayDiscountPercentage  String @default("")
+  familyName                 String @default("")
+  subfamilyName              String @default("")
+  sectionName                String @default("")
+  img                        String 
+  link                       String 
   website  Website @relation(fields: [websiteId], references: [id])
   websiteId Int  // Provide a default value here
   favorit Favorite[]
