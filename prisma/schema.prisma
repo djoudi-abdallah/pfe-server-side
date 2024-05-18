@@ -20,7 +20,7 @@ generator client {
 
 model Website {
   website_id Int @id @default(autoincrement())
-  name String @unique
+  websitename String @unique
   products Product[]
 }
 
