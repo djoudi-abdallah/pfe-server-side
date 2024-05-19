@@ -10,5 +10,5 @@ router.get(
   adminmidllwear,
   dashboardcController.getProductPercentageByWebsite
 );
-router.get("/users-count", adminmidllwear, countUsers);
+router.get("/users-count", adminmidllwear, dashboardcController.countUsers);
 module.exports = router;
