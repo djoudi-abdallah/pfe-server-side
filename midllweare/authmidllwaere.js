@@ -12,12 +12,12 @@ const authMiddleware = (req, res, next) => {
   // Verify the token and decode its payload
   jwt.verify(token, process.env.jwt, (err, decoded) => {
     if (err) {
-      console.error("Error verifying token:", err);
+      console.error("Error verifying token:", err.message); // Log specific error message
       return res.status(401).json({ error: "Unauthorized: Invalid token." });
     }
     // Attach the decoded payload to the request object
-
     req.user = decoded;
+
     next();
   });
 };

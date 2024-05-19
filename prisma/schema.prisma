@@ -71,7 +71,7 @@ model notification{
 }
 model contacte{
   contacte_id Int @id @default(autoincrement())
-  commenatire  String
+  commentaire  String
   user        User @relation(fields: [userId], references: [user_id])
   userId      Int
 }

@@ -15,7 +15,7 @@ exports.createProduct = async (req, res) => {
     sectionName,
     img,
     link,
-    websiteName,
+    websiteId,
   } = req.body;
   try {
     const newProduct = await prisma.product.create({
@@ -31,7 +31,7 @@ exports.createProduct = async (req, res) => {
         sectionName,
         img,
         link,
-        websiteName,
+        websiteId,
       },
     });
     res.json(newProduct);

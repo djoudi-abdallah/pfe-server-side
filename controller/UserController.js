@@ -81,7 +81,7 @@ exports.createUser = async (req, res) => {
     });
 
     // Generate JWT token
-    const token = jwt.sign({ userId: newUser.id }, process.env.jwt);
+    const token = jwt.sign({ userId: newUser.user_id }, process.env.jwt);
 
     res.json({ token });
   } catch (error) {

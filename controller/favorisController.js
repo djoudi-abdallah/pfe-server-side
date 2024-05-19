@@ -6,14 +6,24 @@ const prisma = new PrismaClient();
 
 // Controller function to get favorited products by current user
 exports.createFavorite = async (req, res) => {
-  const { productId } = req.body;
-  const userId = req.user.userId; // Extracted from the token
+  const { productId, pricef } = req.body;
+  const userId = req.user?.userId; // Assuming user_id is the correct field name
 
   try {
+    // Check if the product exists
+    const existingProduct = await prisma.product.findUnique({
+      where: { product_id: productId },
+    });
+
+    if (!existingProduct) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+
     const newFavorite = await prisma.favorite.create({
       data: {
-        userId,
-        productId,
+        user: { connect: { user_id: userId } }, // Connect to the user
+        product: { connect: { product_id: productId } }, // Connect to the product
+        pricef,
       },
     });
 

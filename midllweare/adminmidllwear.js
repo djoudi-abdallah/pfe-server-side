@@ -25,7 +25,7 @@ const adminMiddleware = async (req, res, next) => {
 
       // Check if the user has admin privileges (you can define your own criteria)
       const user = await prisma.user.findUnique({
-        where: { id: userId },
+        where: { user_id: userId },
       });
 
       if (user && user.isAdmin) {
