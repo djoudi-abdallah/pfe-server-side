@@ -105,7 +105,7 @@ exports.updateUser = async (req, res) => {
   try {
     // Find the user by ID
     const user = await prisma.user.findUnique({
-      where: { id: userId },
+      where: { user_id: userId },
     });
 
     if (!user) {
@@ -125,7 +125,7 @@ exports.updateUser = async (req, res) => {
 
     // Update user data, including password if provided
     const updatedUser = await prisma.user.update({
-      where: { id: userId },
+      where: { user_id: userId },
       data: {
         username,
         email,
@@ -148,7 +148,7 @@ exports.deleteUser = async (req, res) => {
   const userId = parseInt(req.params.id);
   try {
     await prisma.user.delete({
-      where: { id: userId },
+      where: { user_id: userId },
     });
     res.status(204).end();
   } catch (error) {
