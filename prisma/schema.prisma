@@ -68,6 +68,7 @@ model notification{
   contenue    String
   user        User @relation(fields: [userId], references: [user_id])
   userId      Int
+  createdAt       DateTime @default(now())
 }
 model contacte{
   contacte_id Int @id @default(autoincrement())
