@@ -33,7 +33,7 @@ exports.getProductschildren = async (req, res) => {
   try {
     const products = await prisma.product.findMany({
       where: {
-        sectionName: "children",
+        sectionName: "kid",
       },
     });
     res.json(products);

@@ -9,14 +9,12 @@ exports.createProduct = async (req, res) => {
     name,
     price,
     oldPrice,
-    displayDiscountPercentage,
-    familyName,
-    subfamilyName,
     sectionName,
     img,
     link,
     websiteId,
   } = req.body;
+
   try {
     const newProduct = await prisma.product.create({
       data: {
@@ -25,18 +23,16 @@ exports.createProduct = async (req, res) => {
         name,
         price,
         oldPrice,
-        displayDiscountPercentage,
-        familyName,
-        subfamilyName,
-        sectionName,
+        sectionName: sectionName.toLowerCase(), // Normaliser en minuscule
         img,
         link,
         websiteId,
       },
     });
+
     res.json(newProduct);
   } catch (error) {
-    console.error(error);
+    console.error("Error creating product:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 };
@@ -123,4 +119,3 @@ exports.deleteProduct = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
-
