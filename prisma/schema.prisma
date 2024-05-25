@@ -22,6 +22,8 @@ model Website {
   website_id Int @id @default(autoincrement())
   websitename String @unique
   products Product[]
+  NombreS      Int
+  DateS        DateTime
 }
 
 model Product {
@@ -33,6 +35,7 @@ model Product {
   sectionName                String 
   img                        String 
   link                       String 
+  DateInsr                   DateTime @default(now())
   website  Website @relation(fields: [websiteId], references: [website_id])
   websiteId Int  // Provide a default value here
   favorit Favorite[]
@@ -75,4 +78,6 @@ model contacte{
   commentaire  String
   user        User @relation(fields: [userId], references: [user_id])
   userId      Int
+  DateC       DateTime @default(now())
+  heureC  Int?     @default(dbgenerated("HOUR(NOW())")) 
 }
